@@ -162,7 +162,10 @@ target_include_directories(${_target_name_lib}
 
 # rosidl_get_typesupport_target(c_typesupport_target "${rosidl_generate_interfaces_TARGET}" "rosidl_typesupport_c")
 # TODO(sloretz) - replace line below with ros2/rosidl#606 line above
-set(c_typesupport_target"${rosidl_generate_interfaces_TARGET}__rosidl_typesupport_c")  # XXX
+set(c_typesupport_target "${rosidl_generate_interfaces_TARGET}__rosidl_typesupport_c")  # XXX
+if (NOT TARGET ${c_typesupport_target})
+  message(STATUS "something has gone wrong in my hardcoding")
+endif()
 target_link_libraries(${_target_name_lib} ${c_typesupport_target})
 
 set(_extension_compile_flags "")
